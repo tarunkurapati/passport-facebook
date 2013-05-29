@@ -4,6 +4,10 @@ var express = require('express')
   , util = require('util')
   , fs = require('fs')
   , Canvas = require('canvas')
+  , async = require('async')
+  , request = require('request')
+  , mkdirp = require('mkdirp')
+  , rimraf = require('rimraf')
   , client = redis.createClient()
   , FacebookStrategy = require('passport-facebook').Strategy;
 
@@ -169,45 +173,211 @@ app.post('/result', ensureAuthenticated, function(req, res){
     }
     client.hmget("answers",myarr[0],myarr[1],myarr[2],myarr[3],myarr[4],function(error,result){
         var resultarr=[];
-       //console.log(result); 
-              console.log("<<<<<<<< Results >>>>>>>>>>");
+       console.log(result); 
+       console.log("<<<<<<<< Results >>>>>>>>>>");
        for(i=0;i<result.length;i++){
           if(resarr[i] == result[i]){
             console.log("right"); 
-            resultarr.push("right");
+            resultarr.push("✔");
           }else{
           console.log("wrong"); 
-            resultarr.push("wrong");
+            resultarr.push("x");
               }
        }
 
-   var canvas = new Canvas(650, 650)
-      , ctx = canvas.getContext('2d')
-      , Image = Canvas.Image
-        , fs = require('fs');
-
-var img = new Image;
-img.onload = function() {
-    console.log("i am in image onload");
-        ctx.drawImage(img, 0, 0, 50, 50, 0, 0, 50, 50);
-
-        var out = fs.createWriteStream(__dirname + '/public/resimg/text'+req.user+'.png')
-          , stream = canvas.createPNGStream();
-          stream.on('data', function(chunk){
-                out.write(chunk);
-                res.render('result', { user: req.user });
-          });
-}
-img.onerror = function(error) {
-    console.log(error);
-
-}
-console.log("loading image");
-img.src = 'http://d3gtl9l2a4fn1j.cloudfront.net/t/p/w500/jjAq3tCezdlQduusgtMhpY2XzW0.jpg';
+    client.hmget("posters",myarr[0],myarr[1],myarr[2],myarr[3],myarr[4],function(error,result){
+            var posterarr= [];
+            
+       for(i=0;i<result.length;i++){
+          posterarr.push(result[i]);  
+        }
 
 
-    });
+        async.parallel([
+            //Load user
+            function(callback) {
+                var uri = posterarr[0];
+                var filename= "0.jpg"
+                request.head(uri, function(err, res, body){
+                    console.log('content-type:', res.headers['content-type']);
+                    console.log('content-length:', res.headers['content-length']);
+                    var picStream = fs.createWriteStream(__dirname + '/public/resimg/'+req.user+'/'+filename);
+                    picStream.on('close', function() {
+                        console.log('file 0 save done');
+                    });
+                    request(uri).pipe(picStream);
+                    callback(); 
+                });
+            },
+            //Load posts
+            function(callback) {
+                var uri = posterarr[0];
+                var filename= "1.jpg"
+                request.head(uri, function(err, res, body){
+                    console.log('content-type:', res.headers['content-type']);
+                    console.log('content-length:', res.headers['content-length']);
+                    var picStream = fs.createWriteStream(__dirname + '/public/resimg/'+req.user+'/'+filename);
+                    picStream.on('close', function() {
+                        console.log('file 1 save done');
+                    });
+                    request(uri).pipe(picStream);
+                    callback(); 
+                });
+            },
+            function(callback) {
+                var uri = posterarr[0];
+                var filename= "2.jpg"
+                request.head(uri, function(err, res, body){
+                    console.log('content-type:', res.headers['content-type']);
+                    console.log('content-length:', res.headers['content-length']);
+                    var picStream = fs.createWriteStream(__dirname + '/public/resimg/'+req.user+'/'+filename);
+                    picStream.on('close', function() {
+                        console.log('file 2 save done');
+                    });
+                    request(uri).pipe(picStream);
+                    callback(); 
+                });
+            },
+            //Load posts
+            function(callback) {
+                var uri = posterarr[0];
+                var filename= "3.jpg"
+                request.head(uri, function(err, res, body){
+                    console.log('content-type:', res.headers['content-type']);
+                    console.log('content-length:', res.headers['content-length']);
+                    var picStream = fs.createWriteStream(__dirname + '/public/resimg/'+req.user+'/'+filename);
+                    picStream.on('close', function() {
+                        console.log('file 3 save done');
+                    });
+                    request(uri).pipe(picStream);
+                    callback(); 
+                });
+            },
+            function(callback) {
+                var uri = posterarr[0];
+                var filename= "4.jpg"
+                request.head(uri, function(err, res, body){
+                    console.log('content-type:', res.headers['content-type']);
+                    console.log('content-length:', res.headers['content-length']);
+                    var picStream = fs.createWriteStream(__dirname + '/public/resimg/'+req.user+'/'+filename);
+                    picStream.on('close', function() {
+                        console.log('file 4 save done');
+                    });
+                    request(uri).pipe(picStream);
+                    callback(); 
+                });
+            }
+        ], function(err) { //This function gets called after the two tasks have called their "task callbacks"
+            if (err) return next(err); //If an error occured, we let express/connect handle it by calling the "next" function
+            //Here locals will be populated with 'user' and 'posts'
+            //res.render('user-profile', locals);
+
+                    mkdirp(__dirname+'/public/resimg/'+req.user, function (err) {
+                        if (err) console.error(err)
+                            else {
+                               console.log('created dir!')
+                               var canvas = new Canvas(650, 650)
+                               , ctx = canvas.getContext('2d')
+                               , Image = Canvas.Image
+                               , fs = require('fs');
+
+
+                                var x = canvas.width / 2;
+                                var y = canvas.height / 12;
+
+                                ctx.beginPath();
+                                ctx.rect(0, 0, 650, 100);
+                                ctx.fillStyle = '#303030';
+                                ctx.fill();
+
+
+                                ctx.font = 'italic 26pt Calibri';
+                                ctx.textAlign = 'center';
+                                ctx.fillStyle = '#f8f8f8';
+                                ctx.fillText('Guesss the movie by Screenshot!', x, y);
+
+
+                                ctx.font = '20pt Calibri';
+                                ctx.textAlign = 'center';
+                                ctx.fillStyle = '#202020';
+
+
+
+                                ctx.fillText('1.'+resultarr[0], 100, 200);
+                                ctx.fillText('2.'+resultarr[1], 100, 300);
+                                ctx.fillText('3.'+resultarr[2], 100, 400);
+                                ctx.fillText('4.'+resultarr[3], 100, 500);
+                                ctx.fillText('5.'+resultarr[4], 100, 600);
+
+    fs.readFile(__dirname + '/public/resimg/'+req.user+'/0.jpg', function(err, data) {
+        if (err) throw err;
+var img = new Canvas.Image; // Create a new Image
+        img.src = data;
+     //   img.onload = function() {
+            console.log("in image onload");
+                //    context.drawImage(imageObj, 69, 50);
+                ctx.drawImage(img, 0, 0, img.width / 4, img.height / 4);
+                                var out = fs.createWriteStream(__dirname + '/public/resimg/'+req.user+'/fb.png')
+                                , stream = canvas.createPNGStream();
+                                stream.on('data', function(chunk){
+                                    out.write(chunk);
+                                    res.render('result', { user: req.user });
+                                });
+
+      //                    };
+
+
+
+                               // ctx.drawImage(images.darthV, 100, 30, 200, 137);
+                               // ctx.drawImage(images.yoda, 350, 55, 93, 104);
+
+
+
+        });
+
+
+
+
+
+                            }
+                    });
+            });
+        });
+
+
+
+/*
+
+// get image url from redis data 
+// get wrong options from post request
+
+
+// download a file
+var download = 
+
+function(uri, filename){
+    request.head(uri, function(err, res, body){
+    console.log('content-type:', res.headers['content-type']);
+    console.log('content-length:', res.headers['content-length']);
+    var picStream = fs.createWriteStream(__dirname + '/public/resimg/'+req.user+'/'+filename);
+    picStream.on('close', function() {
+    console.log('file save done');
 });
+    request(uri).pipe(picStream);
+  });
+};
+download('https://www.google.com/images/srpr/logo3w.png', 'google.png');
+                
+                
+ */               
+                
+
+
+
+
+
+    }); // hmget results end
+}); // post end
 
 
 app.post('/postonfb', ensureAuthenticated, function(req, res){
@@ -222,7 +392,7 @@ app.post('/postonfb', ensureAuthenticated, function(req, res){
     var ACCESS_TOKEN = result;
       
     var form = new FormData(); //Create multipart form
-      form.append('file', fs.createReadStream(__dirname+'/public/resimg/text'+req.user+'.png')); //Put file
+      form.append('file', fs.createReadStream(__dirname+'/public/resimg/'+req.user+'/fb.png')); //Put file
       form.append('message', params.message); //Put message
        
        //POST request options, notice 'path' has access_token parameter
@@ -243,9 +413,9 @@ app.post('/postonfb', ensureAuthenticated, function(req, res){
                  // remove the file
                  if(response.statusCode==200){
                     console.log("fb posted"); 
-                    fs.unlink(__dirname+'/public/resimg/text'+req.user+'.png', function (err) {
+                    rimraf(__dirname+'/public/resimg/'+req.user, function (err) {
                           if (err) throw err;
-                            console.log('successfully deleted /public/resimg/text'+req.user+'.png');
+                            console.log('successfully deleted /public/resimg/'+req.user+' : folder');
                             res.redirect('/final')
                     });
                  }
@@ -294,6 +464,14 @@ app.post('/minsert', ensureAuthenticated, function(req, res){
                 screenshot: params.url,
                 options : [params.option1,params.option2,params.option3,params.option4],
             };
+            client.hset("posters",mid,data.screenshot,function(error,result){
+                if(err){
+                    res.end("cannot proceed to posters");
+                }else{
+                    console.log("poster saved"); 
+               } 
+                
+            });
             var stringdata = JSON.stringify(data);
             client.sadd(memberset,mid,function(err,result){
                 if(err){

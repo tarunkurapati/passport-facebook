@@ -10,6 +10,9 @@
     "canvas": "*",
     "form-data": "*",
     "request": "*",
+    "mkdirp": "*",
+    "async": "*",
+    "rimraf": "*",
     "passport-facebook": ">= 0.0.0"
   }
 }
