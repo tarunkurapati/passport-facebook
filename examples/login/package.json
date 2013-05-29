@@ -1,0 +1,15 @@
+{
+  "name": "passport-facebook-examples-login",
+  "version": "0.0.0",
+  "dependencies": {
+    "express": "3.x",
+    "ejs": ">= 0.8.*",
+    "redis": "*",
+    "ejs-locals": "*",
+    "passport": ">= 0.0.0",
+    "canvas": "*",
+    "form-data": "*",
+    "request": "*",
+    "passport-facebook": ">= 0.0.0"
+  }
+}

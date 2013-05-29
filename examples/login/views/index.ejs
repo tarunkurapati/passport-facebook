@@ -1,0 +1,22 @@
+<% layout('layout') -%>
+<% if (!user) { %>
+	<h2>Welcome! Please log in.</h2>
+    <p><a href="/auth/facebook"><img src="login-with-facebook.png" width="154" height="22"></a></p>
+    <script>
+        //window.location.replace("/auth/facebook");
+    </script>
+<% } else { %>
+	<!-- <h2>Hello, <%= user.username %>.</h2> -->
+    <blockquote>
+      <p>STEP 1: Select the language</p>
+    </blockquote>
+    <form method="get" action="/account">
+        <select multiple="multiple" name="lang">
+          <option value="0" selected>English</option>
+          <option value="1">Hindi</option>
+          <option value="2">Telugu</option>
+          <option value="3">Tamil</option>
+        </select>
+        <button type="submit" class="btn btn-danger">Next</button>
+    </form>
+<% } %>

@@ -1,0 +1,44 @@
+<% layout('layout') -%>
+<p>ID: <%= user.id %></p>
+<p>Username: <%= user.username %></p>
+<p>Name: <%= user.displayName %></p>
+<form method="post">
+    <p>
+        <select name="lang">
+          <option value="0">English</option>
+          <option value="1">Hindi</option>
+          <option value="2">Telugu</option>
+          <option value="3">Tamil</option>
+        </select>
+    </p>
+    <p>
+        <label>Screen shot url</label>
+        <input name="url" class="span7" type="text" placeholder="Type something…">
+    </p>
+    <p>
+        <label>Option 1</label>
+        <input name="option1" class="span4" type="text" placeholder="Type something…">
+    </p>
+    <p>
+        <label>Option 2</label>
+        <input name="option2" class="span4" type="text" placeholder="Type something…">
+    </p>
+    <p>
+        <label>Option 3</label>
+        <input name="option3" class="span4" type="text" placeholder="Type something…">
+    </p>
+    <p>
+        <label>Option 4</label>
+        <input name="option4" class="span4" type="text" placeholder="Type something…">
+    </p>
+    <p>
+        <label>Answer</label>
+        <select name="answer">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+        </select>
+    </p>
+    <button type="submit" class="btn">Submit</button>
+</form>
