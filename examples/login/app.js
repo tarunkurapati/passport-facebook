@@ -276,6 +276,7 @@ app.post('/result', ensureAuthenticated, function(req, res){
                         if (err) console.error(err)
                             else {
                                console.log('created dir!')
+                               /*
                                var canvas = new Canvas(650, 650)
                                , ctx = canvas.getContext('2d')
                                , Image = Canvas.Image
@@ -309,14 +310,66 @@ app.post('/result', ensureAuthenticated, function(req, res){
                                 ctx.fillText('4.'+resultarr[3], 100, 500);
                                 ctx.fillText('5.'+resultarr[4], 100, 600);
 
+  var parse = require('url').parse;
+
+
+
+var url = parse('https://assets0.github.com/img/89d8e6624fb9153c40bd11ae7592a74e058d873e?repo=&url=http%3A%2F%2Fsphotos.ak.fbcdn.net%2Fhphotos-ak-snc3%2Fhs234.snc3%2F22173_446973930292_559060292_10921426_7238463_n.jpg&path=');
+
+http.get({
+    path: url.pathname + url.search
+  , host: url.hostname
+}, function(res){
+  var buf = '';
+  res.setEncoding('binary');
+  res.on('data', function(chunk){ buf += chunk });
+  res.on('end', function(){
+    var img = new Image;
+img.onload = function(){  
+    console.log("in imag onload"); 
+     
+     
+      ctx.drawImage(img, 0, 0);
+   // fs.writeFile('/tmp/tobi.png', canvas.toBuffer());
+
+
+
+                                var out = fs.createWriteStream(__dirname + '/public/resimg/'+req.user+'/fb.png')
+                                , stream = canvas.createPNGStream();
+                                stream.on('data', function(chunk){
+                                    out.write(chunk);
+                                    res.render('result', { user: req.user });
+                                });
+       };
+
+    img.src = new Buffer(buf, 'binary');
+
+
+
+  });
+});
+
+*/
+
+
+
+                  //  var picStream = fs.createWriteStream(__dirname + '/public/resimg/'+req.user+'/'+filename);
+                  /*  var picStream = fs.createWriteStream(__dirname + '/public/resimg/'+req.user+'/'+filename);
+                    picStream.on('close', function() {
+                        console.log('file 4 save done');
+                    });
+                    request(uri).pipe(picStream); */
+
+/*
     fs.readFile(__dirname + '/public/resimg/'+req.user+'/0.jpg', function(err, data) {
         if (err) throw err;
-var img = new Canvas.Image; // Create a new Image
+        var img = new Canvas.Image; // Create a new Image
+        console.dir("image data "+data);
         img.src = data;
-     //   img.onload = function() {
+   //     img.onload = function() {
             console.log("in image onload");
                 //    context.drawImage(imageObj, 69, 50);
-                ctx.drawImage(img, 0, 0, img.width / 4, img.height / 4);
+                //ctx.drawImage(img, 0, 0, img.width / 4, img.height / 4);
                                 var out = fs.createWriteStream(__dirname + '/public/resimg/'+req.user+'/fb.png')
                                 , stream = canvas.createPNGStream();
                                 stream.on('data', function(chunk){
@@ -324,7 +377,7 @@ var img = new Canvas.Image; // Create a new Image
                                     res.render('result', { user: req.user });
                                 });
 
-      //                    };
+    //                     };
 
 
 
@@ -333,7 +386,24 @@ var img = new Canvas.Image; // Create a new Image
 
 
 
-        });
+        }); */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

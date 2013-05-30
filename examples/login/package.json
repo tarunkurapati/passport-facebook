@@ -13,6 +13,7 @@
     "mkdirp": "*",
     "async": "*",
     "rimraf": "*",
+    "url": "*",
     "passport-facebook": ">= 0.0.0"
   }
 }
