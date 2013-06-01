@@ -3,6 +3,7 @@ var express = require('express')
   , redis = require('redis')
   , util = require('util')
   , fs = require('fs')
+  , gm = require('gm')
   , Canvas = require('canvas')
   , async = require('async')
   , request = require('request')
@@ -256,16 +257,50 @@ app.post('/result', ensureAuthenticated, function(req, res){
             function(callback) {
                 var uri = posterarr[0];
                 var filename= "4.jpg"
-                request.head(uri, function(err, res, body){
-                    console.log('content-type:', res.headers['content-type']);
-                    console.log('content-length:', res.headers['content-length']);
-                    var picStream = fs.createWriteStream(__dirname + '/public/resimg/'+req.user+'/'+filename);
-                    picStream.on('close', function() {
+                //request.head(uri, function(err, res, body){
+                 //   console.log('content-type:', res.headers['content-type']);
+                  //  console.log('content-length:', res.headers['content-length']);
+                    //var picStream = fs.createWriteStream(__dirname + '/public/resimg/'+req.user+'/'+filename);
+                    /*picStream.on('close', function() {
                         console.log('file 4 save done');
+                    }); */
+                    request(uri, function(error,res,body){
+                    //   console.log(res); 
+                    var data = new Buffer(parseInt(res.headers['content-length'],10));
+                      res.setEncoding('utf8');
+
+                    //var data = '';
+                    var pos = 0;
+                    res.on('error', function(e){
+                       console.log(e.message); 
+                        
+                        });
+                    res.on('data', function(chunk) {
+                      chunk.copy(data, pos);
+                      pos += chunk.length;
+                        console.log("in data");
                     });
-                    request(uri).pipe(picStream);
+                    res.on('end', function () {
+                      img = new Canvas.Image;
+                      img.src = data;
+                      ctx.drawImage(img, 0, 0, img.width, img.height);
+                      var out = fs.createWriteStream(__dirname + '/my-out4.png')
+                        , stream = outCanvas.createPNGStream();
+                        console.log("in end");
+
+                      stream.on('data', function(chunk){
+                        out.write(chunk);
+                        console.log("in chunk");
+                      });
+                      stream.on('end', function(){
+                        console.log("in write end");
+                      });
+                    });
+                        
+                        
+                        });
                     callback(); 
-                });
+                //});
             }
         ], function(err) { //This function gets called after the two tasks have called their "task callbacks"
             if (err) return next(err); //If an error occured, we let express/connect handle it by calling the "next" function
@@ -276,6 +311,99 @@ app.post('/result', ensureAuthenticated, function(req, res){
                         if (err) console.error(err)
                             else {
                                console.log('created dir!')
+
+/*
+
+
+var fs = require('fs'),
+    http = require('http'),
+url = require('url');
+
+var outCanvas = new Canvas(1000, 750);
+var ctx = outCanvas.getContext('2d');
+
+http.get(
+    {
+        host: 'farm8.staticflickr.com',
+        port: 80,
+        path: '/7108/7038906747_69a526f070_z.jpg'
+    },
+    function(res) {
+                    var data = new Buffer(parseInt(res.headers['content-length'],10));
+                    var pos = 0;
+                    res.on('data', function(chunk) {
+                      chunk.copy(data, pos);
+                      pos += chunk.length;
+                    });
+                    res.on('end', function () {
+                      img = new Canvas.Image;
+                      img.src = data;
+                      ctx.drawImage(img, 0, 0, img.width, img.height);
+                      var out = fs.createWriteStream(__dirname + '/my-out.png')
+                        , stream = outCanvas.createPNGStream();
+
+                      stream.on('data', function(chunk){
+                        out.write(chunk);
+                      });
+                    });
+
+    }
+);
+
+*/
+
+
+
+                                //var out = fs.createWriteStream(__dirname + '/public/resimg/'+req.user+'/fb.png')
+/*
+gm(__dirname + '/public/resimg/'+req.user+'/fb.png')
+.resize(353, 257)
+.autoOrient()
+.write(writeStream, function (err) {
+      if (!err) console.log(' hooray! ');
+});
+*/
+//gm(__dirname + '/public/resimg/'+req.user+'/fb.png').background("black");
+//gm("img.png").background("black");
+/*
+ var resizeX = 343
+   , resizeY = 257
+
+//   gm('/path/to/image.jpg')
+gm(__dirname + '/public/resimg/'+req.user+'/fb.png')
+   .colorize(200, 200, 256)
+   .resize(resizeX, resizeY)
+   .autoOrient();
+   .write(response, function (err) {
+         if (err) err
+             console.log(check the image);
+   });
+
+
+
+                    var canvas = new Canvas(650, 650)
+                    , ctx = canvas.getContext('2d');
+
+var stream =fs.createReadStream(__dirname + '/public/resimg/'+req.user+'/1.jpg'); 
+stream
+*/
+
+
+                    /*
+                    fs.readFile(__dirname + '/public/resimg/'+req.user+'/1.jpg', function(err, squid){
+                          if (err) throw err;
+                            img = new Canvas.Image;
+                              img.src = squid;
+                              img.onload = function(){
+                                  console.log("ian here in onload");
+                                ctx.drawImage(img, 0, 0, img.width / 4, img.height / 4);
+                              }
+                    });
+
+*/
+
+
+
                                /*
                                var canvas = new Canvas(650, 650)
                                , ctx = canvas.getContext('2d')
