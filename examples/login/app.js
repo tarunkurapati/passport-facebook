@@ -3,11 +3,12 @@ var express = require('express')
   , redis = require('redis')
   , util = require('util')
   , fs = require('fs')
-  , gm = require('gm')
   , Canvas = require('canvas')
   , async = require('async')
   , request = require('request')
   , mkdirp = require('mkdirp')
+  , http = require('http')
+  , url = require('url')
   , rimraf = require('rimraf')
   , client = redis.createClient()
   , FacebookStrategy = require('passport-facebook').Strategy;
@@ -85,7 +86,6 @@ passport.use(new FacebookStrategy({
 
 var engine = require('ejs-locals');
 
-                    //fs.unlink(__dirname+'/public/resimg/text'+req.user+'.png', function (err) {
 var http= require('https');
 var privateKey = fs.readFileSync(__dirname+'/public/cert/ssl.key').toString();
 var certificate = fs.readFileSync(__dirname+'/public/cert/visesha.com.crt').toString();  
@@ -174,26 +174,60 @@ app.post('/result', ensureAuthenticated, function(req, res){
     }
     client.hmget("answers",myarr[0],myarr[1],myarr[2],myarr[3],myarr[4],function(error,result){
         var resultarr=[];
-       console.log(result); 
-       console.log("<<<<<<<< Results >>>>>>>>>>");
-       for(i=0;i<result.length;i++){
-          if(resarr[i] == result[i]){
-            console.log("right"); 
-            resultarr.push("✔");
-          }else{
-          console.log("wrong"); 
-            resultarr.push("x");
-              }
-       }
-
-    client.hmget("posters",myarr[0],myarr[1],myarr[2],myarr[3],myarr[4],function(error,result){
-            var posterarr= [];
-            
-       for(i=0;i<result.length;i++){
-          posterarr.push(result[i]);  
+        console.log(result); 
+        console.log("<<<<<<<< Results >>>>>>>>>>");
+        for(i=0;i<result.length;i++){
+            if(resarr[i] == result[i]){
+                console.log("right"); 
+                resultarr.push("✔");
+            }else{
+            console.log("wrong"); 
+                resultarr.push("x");
+            }
         }
 
+    client.hmget("posters",myarr[0],myarr[1],myarr[2],myarr[3],myarr[4],function(error,result){
+        var posterarr= [];
+        for(i=0;i<result.length;i++){
+            posterarr.push(result[i]);  
+        }
+                               var canvas = new Canvas(650, 650)
+                               , ctx = canvas.getContext('2d');
 
+                               /*
+                               var canvas = new Canvas(650, 650)
+                               , ctx = canvas.getContext('2d')
+                               , Image = Canvas.Image
+                               , fs = require('fs');
+                                */
+
+
+                                var x = canvas.width / 2;
+                                var y = canvas.height / 12;
+
+                                ctx.beginPath();
+                                ctx.rect(0, 0, 650, 100);
+                                ctx.fillStyle = '#303030';
+                                ctx.fill();
+
+
+                                ctx.font = 'italic 26pt Calibri';
+                                ctx.textAlign = 'center';
+                                ctx.fillStyle = '#f8f8f8';
+                                ctx.fillText('Guesss the movie by Screenshot!', x, y);
+
+
+                                ctx.font = '20pt Calibri';
+                                ctx.textAlign = 'center';
+                                ctx.fillStyle = '#202020';
+
+
+
+                                //ctx.fillText('1.'+resultarr[0], 100, 200);
+                                //ctx.fillText('2.'+resultarr[1], 100, 300);
+                               // ctx.fillText('3.'+resultarr[2], 100, 400);
+                                //ctx.fillText('4.'+resultarr[3], 100, 500);
+                                //ctx.fillText('5.'+resultarr[4], 100, 600);
         async.parallel([
             //Load user
             function(callback) {
@@ -255,154 +289,44 @@ app.post('/result', ensureAuthenticated, function(req, res){
                 });
             },
             function(callback) {
-                var uri = posterarr[0];
-                var filename= "4.jpg"
-                //request.head(uri, function(err, res, body){
-                 //   console.log('content-type:', res.headers['content-type']);
-                  //  console.log('content-length:', res.headers['content-length']);
-                    //var picStream = fs.createWriteStream(__dirname + '/public/resimg/'+req.user+'/'+filename);
-                    /*picStream.on('close', function() {
-                        console.log('file 4 save done');
-                    }); */
-                    request(uri, function(error,res,body){
-                    //   console.log(res); 
-                    var data = new Buffer(parseInt(res.headers['content-length'],10));
-                      res.setEncoding('utf8');
-
-                    //var data = '';
-                    var pos = 0;
-                    res.on('error', function(e){
-                       console.log(e.message); 
-                        
+                    https.get(
+                        {
+                            host: 'd3gtl9l2a4fn1j.cloudfront.net',
+                            port: 443,
+                            path: 'https://d3gtl9l2a4fn1j.cloudfront.net/t/p/w500/5bKy4O0WQTa3MG2wPWViUNUTIEG.jpg'
+                        },
+                        function(res) {
+                            var data = new Buffer(parseInt(res.headers['content-length'],10));
+                            var pos = 0;
+                            res.on('data', function(chunk) {
+                                chunk.copy(data, pos);
+                                 pos += chunk.length;
+                            });
+                            res.on('end', function () {
+                                img = new Canvas.Image;
+                                img.src = data;
+                                ctx.drawImage(img, 0, 0, img.width, img.height);
+                                callback(); 
+                            });
+                        }
+                    ).on('error',function(e){
+                            console.log("error img load : "+e); 
                         });
-                    res.on('data', function(chunk) {
-                      chunk.copy(data, pos);
-                      pos += chunk.length;
-                        console.log("in data");
-                    });
-                    res.on('end', function () {
-                      img = new Canvas.Image;
-                      img.src = data;
-                      ctx.drawImage(img, 0, 0, img.width, img.height);
-                      var out = fs.createWriteStream(__dirname + '/my-out4.png')
-                        , stream = outCanvas.createPNGStream();
-                        console.log("in end");
 
-                      stream.on('data', function(chunk){
-                        out.write(chunk);
-                        console.log("in chunk");
-                      });
-                      stream.on('end', function(){
-                        console.log("in write end");
-                      });
-                    });
-                        
-                        
-                        });
-                    callback(); 
-                //});
             }
         ], function(err) { //This function gets called after the two tasks have called their "task callbacks"
             if (err) return next(err); //If an error occured, we let express/connect handle it by calling the "next" function
             //Here locals will be populated with 'user' and 'posts'
             //res.render('user-profile', locals);
-
-                    mkdirp(__dirname+'/public/resimg/'+req.user, function (err) {
-                        if (err) console.error(err)
-                            else {
-                               console.log('created dir!')
-
-/*
-
-
-var fs = require('fs'),
-    http = require('http'),
-url = require('url');
-
-var outCanvas = new Canvas(1000, 750);
-var ctx = outCanvas.getContext('2d');
-
-http.get(
-    {
-        host: 'farm8.staticflickr.com',
-        port: 80,
-        path: '/7108/7038906747_69a526f070_z.jpg'
-    },
-    function(res) {
-                    var data = new Buffer(parseInt(res.headers['content-length'],10));
-                    var pos = 0;
-                    res.on('data', function(chunk) {
-                      chunk.copy(data, pos);
-                      pos += chunk.length;
-                    });
-                    res.on('end', function () {
-                      img = new Canvas.Image;
-                      img.src = data;
-                      ctx.drawImage(img, 0, 0, img.width, img.height);
-                      var out = fs.createWriteStream(__dirname + '/my-out.png')
-                        , stream = outCanvas.createPNGStream();
-
-                      stream.on('data', function(chunk){
+            mkdirp(__dirname+'/public/resimg/'+req.user, function (err) {
+                if (err) console.error(err)
+                else {
+                    console.log('created dir!')
+                    var out = fs.createWriteStream(__dirname + '/public/resimg/'+req.user+'/fb.png')
+                    , stream = canvas.createPNGStream();
+                    stream.on('data', function(chunk){
                         out.write(chunk);
-                      });
                     });
-
-    }
-);
-
-*/
-
-
-
-                                //var out = fs.createWriteStream(__dirname + '/public/resimg/'+req.user+'/fb.png')
-/*
-gm(__dirname + '/public/resimg/'+req.user+'/fb.png')
-.resize(353, 257)
-.autoOrient()
-.write(writeStream, function (err) {
-      if (!err) console.log(' hooray! ');
-});
-*/
-//gm(__dirname + '/public/resimg/'+req.user+'/fb.png').background("black");
-//gm("img.png").background("black");
-/*
- var resizeX = 343
-   , resizeY = 257
-
-//   gm('/path/to/image.jpg')
-gm(__dirname + '/public/resimg/'+req.user+'/fb.png')
-   .colorize(200, 200, 256)
-   .resize(resizeX, resizeY)
-   .autoOrient();
-   .write(response, function (err) {
-         if (err) err
-             console.log(check the image);
-   });
-
-
-
-                    var canvas = new Canvas(650, 650)
-                    , ctx = canvas.getContext('2d');
-
-var stream =fs.createReadStream(__dirname + '/public/resimg/'+req.user+'/1.jpg'); 
-stream
-*/
-
-
-                    /*
-                    fs.readFile(__dirname + '/public/resimg/'+req.user+'/1.jpg', function(err, squid){
-                          if (err) throw err;
-                            img = new Canvas.Image;
-                              img.src = squid;
-                              img.onload = function(){
-                                  console.log("ian here in onload");
-                                ctx.drawImage(img, 0, 0, img.width / 4, img.height / 4);
-                              }
-                    });
-
-*/
-
-
 
                                /*
                                var canvas = new Canvas(650, 650)
@@ -438,144 +362,14 @@ stream
                                 ctx.fillText('4.'+resultarr[3], 100, 500);
                                 ctx.fillText('5.'+resultarr[4], 100, 600);
 
-  var parse = require('url').parse;
-
-
-
-var url = parse('https://assets0.github.com/img/89d8e6624fb9153c40bd11ae7592a74e058d873e?repo=&url=http%3A%2F%2Fsphotos.ak.fbcdn.net%2Fhphotos-ak-snc3%2Fhs234.snc3%2F22173_446973930292_559060292_10921426_7238463_n.jpg&path=');
-
-http.get({
-    path: url.pathname + url.search
-  , host: url.hostname
-}, function(res){
-  var buf = '';
-  res.setEncoding('binary');
-  res.on('data', function(chunk){ buf += chunk });
-  res.on('end', function(){
-    var img = new Image;
-img.onload = function(){  
-    console.log("in imag onload"); 
-     
-     
-      ctx.drawImage(img, 0, 0);
-   // fs.writeFile('/tmp/tobi.png', canvas.toBuffer());
-
-
-
-                                var out = fs.createWriteStream(__dirname + '/public/resimg/'+req.user+'/fb.png')
-                                , stream = canvas.createPNGStream();
-                                stream.on('data', function(chunk){
-                                    out.write(chunk);
-                                    res.render('result', { user: req.user });
-                                });
-       };
-
-    img.src = new Buffer(buf, 'binary');
-
-
-
-  });
-});
-
-*/
-
-
-
-                  //  var picStream = fs.createWriteStream(__dirname + '/public/resimg/'+req.user+'/'+filename);
-                  /*  var picStream = fs.createWriteStream(__dirname + '/public/resimg/'+req.user+'/'+filename);
-                    picStream.on('close', function() {
-                        console.log('file 4 save done');
+                                 */               
+    }
+     // hmget results end
                     });
-                    request(uri).pipe(picStream); */
-
-/*
-    fs.readFile(__dirname + '/public/resimg/'+req.user+'/0.jpg', function(err, data) {
-        if (err) throw err;
-        var img = new Canvas.Image; // Create a new Image
-        console.dir("image data "+data);
-        img.src = data;
-   //     img.onload = function() {
-            console.log("in image onload");
-                //    context.drawImage(imageObj, 69, 50);
-                //ctx.drawImage(img, 0, 0, img.width / 4, img.height / 4);
-                                var out = fs.createWriteStream(__dirname + '/public/resimg/'+req.user+'/fb.png')
-                                , stream = canvas.createPNGStream();
-                                stream.on('data', function(chunk){
-                                    out.write(chunk);
-                                    res.render('result', { user: req.user });
-                                });
-
-    //                     };
-
-
-
-                               // ctx.drawImage(images.darthV, 100, 30, 200, 137);
-                               // ctx.drawImage(images.yoda, 350, 55, 93, 104);
-
-
-
-        }); */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                            }
-                    });
-            });
-        });
-
-
-
-/*
-
-// get image url from redis data 
-// get wrong options from post request
-
-
-// download a file
-var download = 
-
-function(uri, filename){
-    request.head(uri, function(err, res, body){
-    console.log('content-type:', res.headers['content-type']);
-    console.log('content-length:', res.headers['content-length']);
-    var picStream = fs.createWriteStream(__dirname + '/public/resimg/'+req.user+'/'+filename);
-    picStream.on('close', function() {
-    console.log('file save done');
-});
-    request(uri).pipe(picStream);
-  });
-};
-download('https://www.google.com/images/srpr/logo3w.png', 'google.png');
-                
-                
- */               
-                
-
-
-
-
-
-    }); // hmget results end
-}); // post end
+    });
+    });
+    });
+    });
 
 
 app.post('/postonfb', ensureAuthenticated, function(req, res){
