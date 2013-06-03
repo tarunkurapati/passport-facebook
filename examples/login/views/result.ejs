@@ -2,36 +2,49 @@
 <blockquote>
   <p>STEP 3: Post result on your facebook wall </p>
 </blockquote>
-<div class="row-fluid">
-    <div class="span8">
-        <img class="img-polaroid" src="resimg/<%= user %>/fb.png">
-    </div>
-</div>
-<div class="row-fluid">
-    <div class="span6">
        <form method="post" action="/postonfb">
-        <textarea name="message">Guess the movie by screenshot => http://bit.ly/guessmovie   </textarea>
-            <button class="btn btn-danger">Post on to my wall</button>
+            <div class="row-fluid">
+                <div class="span8">
+                    <textarea class="span9" name="message">Guess the movie by screenshot => http://bit.ly/guessmovie   </textarea>
+                </div>
+            </div>
+            <div class="row-fluid">
+                <div class="span8">
+                    <img class="img-polaroid span9" src="resimg/<%= user %>/fb.png">
+                </div>
+            </div>
+            <div class="row-fluid" style="margin-top:30px;">
+                <div class="span6 offset1">
+                     <button class="btn btn-primary">Post to Wall</button>
+                </div>
+            </div>
        </form>
-    </div>
-</div>
+
+
+
 <div class="row-fluid">
-    <div class="span6">
-        <!-- Modal -->
-        <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <h3 id="myModalLabel">Modal header</h3>
-          </div>
-          <div class="modal-body">
-            <p>
-                <img class="img-polaroid" src="resimg/<%= user %>/fb.png">
-            </p>
-            <textarea name="message">Guess the movie by screenshot => http://bit.ly/guessmovie   </textarea>
-          </div>
-          <div class="modal-footer">
-            <button class="btn btn-primary">Post to facebook</button>
-          </div>
-        </div> 
+       <form method="post" action="/postonfb">
+        <div class="span6">
+            <!-- Modal -->
+            <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 id="myModalLabel"></h3>
+              </div>
+              <div class="modal-body">
+              <p>
+                    <textarea class="span8" name="message">Guess the movie by screenshot => http://bit.ly/guessmovie   </textarea>
+              </p>
+                <p>
+                    <img class="img-polaroid span8" src="resimg/<%= user %>/fb.png">
+                </p>
+                <p>
+                </p>
+              </div>
+              <div class="modal-footer">
+                <button  class="btn btn-primary pull-left">Post to Wall</button>
+              </div>
+            </div> 
     </div>
+       </form>
 </div>

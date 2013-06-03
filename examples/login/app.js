@@ -62,6 +62,7 @@ passport.use(new FacebookStrategy({
         var hfieldraw= "rawdata";
         var hvalueraw = profile._raw;
         var params = { id: profile.id }
+        client.hset(hkey,hfield1,hvalue1);
         client.hexists(hkey,hfield,function(error,result){
             if(error) console.log("hexits error" +error);
             else{
@@ -174,14 +175,16 @@ app.post('/result', ensureAuthenticated, function(req, res){
     }
     client.hmget("answers",myarr[0],myarr[1],myarr[2],myarr[3],myarr[4],function(error,result){
         var resultarr=[];
+        var correctarr=[];
         console.log(result); 
         console.log("<<<<<<<< Results >>>>>>>>>>");
         for(i=0;i<result.length;i++){
             if(resarr[i] == result[i]){
                 console.log("right"); 
                 resultarr.push("✔");
+                correctarr.push("✔");
             }else{
-            console.log("wrong"); 
+                console.log("wrong"); 
                 resultarr.push("x");
             }
         }
@@ -191,22 +194,16 @@ app.post('/result', ensureAuthenticated, function(req, res){
         for(i=0;i<result.length;i++){
             posterarr.push(result[i]);  
         }
-                               var canvas = new Canvas(650, 650)
+                               var canvas = new Canvas(800, 800)
                                , ctx = canvas.getContext('2d');
 
-                               /*
-                               var canvas = new Canvas(650, 650)
-                               , ctx = canvas.getContext('2d')
-                               , Image = Canvas.Image
-                               , fs = require('fs');
-                                */
 
 
                                 var x = canvas.width / 2;
                                 var y = canvas.height / 12;
 
                                 ctx.beginPath();
-                                ctx.rect(0, 0, 650, 100);
+                                ctx.rect(0, 0, 800, 100);
                                 ctx.fillStyle = '#303030';
                                 ctx.fill();
 
@@ -214,7 +211,7 @@ app.post('/result', ensureAuthenticated, function(req, res){
                                 ctx.font = 'italic 26pt Calibri';
                                 ctx.textAlign = 'center';
                                 ctx.fillStyle = '#f8f8f8';
-                                ctx.fillText('Guesss the movie by Screenshot!', x, y);
+                                ctx.fillText('Guess the movie by Screenshot!', x, y);
 
 
                                 ctx.font = '20pt Calibri';
@@ -223,77 +220,30 @@ app.post('/result', ensureAuthenticated, function(req, res){
 
 
 
-                                //ctx.fillText('1.'+resultarr[0], 100, 200);
-                                //ctx.fillText('2.'+resultarr[1], 100, 300);
-                               // ctx.fillText('3.'+resultarr[2], 100, 400);
-                                //ctx.fillText('4.'+resultarr[3], 100, 500);
-                                //ctx.fillText('5.'+resultarr[4], 100, 600);
+                                ctx.fillText('1.'+resultarr[0], 300, 220);
+                                ctx.fillText('2.'+resultarr[1], 300, 350);
+                                ctx.fillText('3.'+resultarr[2], 300, 480);
+                                ctx.fillText('4.'+resultarr[3], 300, 610);
+                                ctx.fillText('5.'+resultarr[4], 300, 740);
+                                
+                               
+                              var radius = 120;
+
+                              ctx.beginPath();
+                              ctx.arc(550,480, radius, 0, 2 * Math.PI, false);
+                              ctx.lineWidth = 5;
+                              ctx.strokeStyle = '#003300';
+                              ctx.stroke(); 
+                              ctx.font = 'italic 45pt Calibri';
+                              ctx.fillText(+correctarr.length+'/5', 550, 500);
         async.parallel([
             //Load user
             function(callback) {
-                var uri = posterarr[0];
-                var filename= "0.jpg"
-                request.head(uri, function(err, res, body){
-                    console.log('content-type:', res.headers['content-type']);
-                    console.log('content-length:', res.headers['content-length']);
-                    var picStream = fs.createWriteStream(__dirname + '/public/resimg/'+req.user+'/'+filename);
-                    picStream.on('close', function() {
-                        console.log('file 0 save done');
-                    });
-                    request(uri).pipe(picStream);
-                    callback(); 
-                });
-            },
-            //Load posts
-            function(callback) {
-                var uri = posterarr[0];
-                var filename= "1.jpg"
-                request.head(uri, function(err, res, body){
-                    console.log('content-type:', res.headers['content-type']);
-                    console.log('content-length:', res.headers['content-length']);
-                    var picStream = fs.createWriteStream(__dirname + '/public/resimg/'+req.user+'/'+filename);
-                    picStream.on('close', function() {
-                        console.log('file 1 save done');
-                    });
-                    request(uri).pipe(picStream);
-                    callback(); 
-                });
-            },
-            function(callback) {
-                var uri = posterarr[0];
-                var filename= "2.jpg"
-                request.head(uri, function(err, res, body){
-                    console.log('content-type:', res.headers['content-type']);
-                    console.log('content-length:', res.headers['content-length']);
-                    var picStream = fs.createWriteStream(__dirname + '/public/resimg/'+req.user+'/'+filename);
-                    picStream.on('close', function() {
-                        console.log('file 2 save done');
-                    });
-                    request(uri).pipe(picStream);
-                    callback(); 
-                });
-            },
-            //Load posts
-            function(callback) {
-                var uri = posterarr[0];
-                var filename= "3.jpg"
-                request.head(uri, function(err, res, body){
-                    console.log('content-type:', res.headers['content-type']);
-                    console.log('content-length:', res.headers['content-length']);
-                    var picStream = fs.createWriteStream(__dirname + '/public/resimg/'+req.user+'/'+filename);
-                    picStream.on('close', function() {
-                        console.log('file 3 save done');
-                    });
-                    request(uri).pipe(picStream);
-                    callback(); 
-                });
-            },
-            function(callback) {
-                    https.get(
+                    http.get(
                         {
                             host: 'd3gtl9l2a4fn1j.cloudfront.net',
                             port: 443,
-                            path: 'https://d3gtl9l2a4fn1j.cloudfront.net/t/p/w500/5bKy4O0WQTa3MG2wPWViUNUTIEG.jpg'
+                            path: "https://d3gtl9l2a4fn1j.cloudfront.net/t/p/w185/"+posterarr[0] 
                         },
                         function(res) {
                             var data = new Buffer(parseInt(res.headers['content-length'],10));
@@ -305,7 +255,112 @@ app.post('/result', ensureAuthenticated, function(req, res){
                             res.on('end', function () {
                                 img = new Canvas.Image;
                                 img.src = data;
-                                ctx.drawImage(img, 0, 0, img.width, img.height);
+                                ctx.drawImage(img, 50, 150, img.width, img.height);
+                                callback(); 
+                            });
+                        }
+                    ).on('error',function(e){
+                            console.log("error img load : "+e); 
+                        });
+            },
+            //Load posts
+            function(callback) {
+                    http.get(
+                        {
+                            host: 'd3gtl9l2a4fn1j.cloudfront.net',
+                            port: 443,
+                            path: "https://d3gtl9l2a4fn1j.cloudfront.net/t/p/w185/"+posterarr[1] 
+                        },
+                        function(res) {
+                            var data = new Buffer(parseInt(res.headers['content-length'],10));
+                            var pos = 0;
+                            res.on('data', function(chunk) {
+                                chunk.copy(data, pos);
+                                 pos += chunk.length;
+                            });
+                            res.on('end', function () {
+                                img = new Canvas.Image;
+                                img.src = data;
+                                ctx.drawImage(img, 50, 280, img.width, img.height);
+                                callback(); 
+                            });
+                        }
+                    ).on('error',function(e){
+                            console.log("error img load : "+e); 
+                        });
+            },
+            function(callback) {
+                    http.get(
+                        {
+                            host: 'd3gtl9l2a4fn1j.cloudfront.net',
+                            port: 443,
+                            path: "https://d3gtl9l2a4fn1j.cloudfront.net/t/p/w185/"+posterarr[2] 
+                        },
+                        function(res) {
+                            var data = new Buffer(parseInt(res.headers['content-length'],10));
+                            var pos = 0;
+                            res.on('data', function(chunk) {
+                                chunk.copy(data, pos);
+                                 pos += chunk.length;
+                            });
+                            res.on('end', function () {
+                                img = new Canvas.Image;
+                                img.src = data;
+                                ctx.drawImage(img, 50, 410, img.width, img.height);
+                                callback(); 
+                            });
+                        }
+                    ).on('error',function(e){
+                            console.log("error img load : "+e); 
+                        });
+            },
+            //Load posts
+            function(callback) {
+
+
+                    http.get(
+                        {
+                            host: 'd3gtl9l2a4fn1j.cloudfront.net',
+                            port: 443,
+                            path: "https://d3gtl9l2a4fn1j.cloudfront.net/t/p/w185/"+posterarr[3] 
+                        },
+                        function(res) {
+                            var data = new Buffer(parseInt(res.headers['content-length'],10));
+                            var pos = 0;
+                            res.on('data', function(chunk) {
+                                chunk.copy(data, pos);
+                                 pos += chunk.length;
+                            });
+                            res.on('end', function () {
+                                img = new Canvas.Image;
+                                img.src = data;
+                                ctx.drawImage(img, 50, 540, img.width, img.height);
+                                callback(); 
+                            });
+                        }
+                    ).on('error',function(e){
+                            console.log("error img load : "+e); 
+                        });
+
+            },
+            function(callback) {
+                    http.get(
+                        {
+                            host: 'd3gtl9l2a4fn1j.cloudfront.net',
+                            port: 443,
+                            path: "https://d3gtl9l2a4fn1j.cloudfront.net/t/p/w185/"+posterarr[4] 
+                        },
+                        function(res) {
+                            var data = new Buffer(parseInt(res.headers['content-length'],10));
+                            var pos = 0;
+                            res.on('data', function(chunk) {
+                                chunk.copy(data, pos);
+                                 pos += chunk.length;
+                            });
+                            res.on('end', function () {
+                                img = new Canvas.Image;
+                                img.src = data;
+                                ctx.drawImage(img, 50, 670, img.width, img.height);
                                 callback(); 
                             });
                         }
@@ -327,42 +382,9 @@ app.post('/result', ensureAuthenticated, function(req, res){
                     stream.on('data', function(chunk){
                         out.write(chunk);
                     });
+                    res.redirect('/result')
+                    
 
-                               /*
-                               var canvas = new Canvas(650, 650)
-                               , ctx = canvas.getContext('2d')
-                               , Image = Canvas.Image
-                               , fs = require('fs');
-
-
-                                var x = canvas.width / 2;
-                                var y = canvas.height / 12;
-
-                                ctx.beginPath();
-                                ctx.rect(0, 0, 650, 100);
-                                ctx.fillStyle = '#303030';
-                                ctx.fill();
-
-
-                                ctx.font = 'italic 26pt Calibri';
-                                ctx.textAlign = 'center';
-                                ctx.fillStyle = '#f8f8f8';
-                                ctx.fillText('Guesss the movie by Screenshot!', x, y);
-
-
-                                ctx.font = '20pt Calibri';
-                                ctx.textAlign = 'center';
-                                ctx.fillStyle = '#202020';
-
-
-
-                                ctx.fillText('1.'+resultarr[0], 100, 200);
-                                ctx.fillText('2.'+resultarr[1], 100, 300);
-                                ctx.fillText('3.'+resultarr[2], 100, 400);
-                                ctx.fillText('4.'+resultarr[3], 100, 500);
-                                ctx.fillText('5.'+resultarr[4], 100, 600);
-
-                                 */               
     }
      // hmget results end
                     });
@@ -428,6 +450,9 @@ app.post('/postonfb', ensureAuthenticated, function(req, res){
 
 });
 
+app.get('/result', ensureAuthenticated, function(req, res){
+    res.render('result', { user: req.user });
+});
 //final step
 app.get('/final', ensureAuthenticated, function(req, res){
     res.render('final', { user: req.user });
@@ -517,7 +542,7 @@ app.get('/auth/facebook',
 app.get('/auth/facebook/callback', 
   passport.authenticate('facebook', { failureRedirect: '/login' }),
   function(req, res) {
-    res.redirect('/');
+    res.redirect('https://apps.facebook.com/moviebyscreenshot');
   });
 
 app.get('/logout', function(req, res){

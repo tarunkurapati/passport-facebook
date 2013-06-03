@@ -1,0 +1,259 @@
+running on port 3999
+202.7.107.76 - - [Sun, 02 Jun 2013 09:03:09 GMT] "GET / HTTP/1.1" 200 1350 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"
+202.7.107.76 - - [Sun, 02 Jun 2013 09:03:10 GMT] "GET /css/bootstrap.min.css HTTP/1.1" 304 - "https://www.visesha.com/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"
+202.7.107.76 - - [Sun, 02 Jun 2013 09:03:10 GMT] "GET /css/bootstrap-responsive.min.css HTTP/1.1" 304 - "https://www.visesha.com/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"
+202.7.107.76 - - [Sun, 02 Jun 2013 09:03:10 GMT] "GET /js/guessholic.js HTTP/1.1" 304 - "https://www.visesha.com/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"
+202.7.107.76 - - [Sun, 02 Jun 2013 09:03:10 GMT] "GET /js/bootstrap.min.js HTTP/1.1" 304 - "https://www.visesha.com/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"
+202.7.107.76 - - [Sun, 02 Jun 2013 09:03:10 GMT] "GET /auth/facebook HTTP/1.1" 302 486 "https://www.visesha.com/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"
+202.7.107.76 - - [Sun, 02 Jun 2013 09:03:10 GMT] "GET /favicon.ico HTTP/1.1" 404 - "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"
+<<<<<<<<<<<< User profile >>>>>>>>>>>>
+{ provider: 'facebook',
+  id: '100000490412078',
+  username: 'tanya.raaz',
+  displayName: 'Tanya Sri',
+  name: { familyName: 'Sri', givenName: 'Tanya', middleName: undefined },
+  gender: 'female',
+  profileUrl: 'http://www.facebook.com/tanya.raaz',
+  emails: [ { value: 'tanyaraaz@gmail.com' } ],
+  _raw: '{"id":"100000490412078","name":"Tanya Sri","first_name":"Tanya","last_name":"Sri","link":"http:\\/\\/www.facebook.com\\/tanya.raaz","username":"tanya.raaz","location":{"id":"115200305158163","name":"Hyderabad, Andhra Pradesh"},"favorite_athletes":[{"id":"100787839962234","name":"Saina Nehwal"},{"id":"344128252278047","name":"Sachin Tendulkar"}],"gender":"female","email":"tanyaraaz\\u0040gmail.com","timezone":9,"locale":"en_US","verified":true,"updated_time":"2013-06-02T06:51:19+0000"}',
+  _json: 
+   { id: '100000490412078',
+     name: 'Tanya Sri',
+     first_name: 'Tanya',
+     last_name: 'Sri',
+     link: 'http://www.facebook.com/tanya.raaz',
+     username: 'tanya.raaz',
+     location: { id: '115200305158163', name: 'Hyderabad, Andhra Pradesh' },
+     favorite_athletes: [ [Object], [Object] ],
+     gender: 'female',
+     email: 'tanyaraaz@gmail.com',
+     timezone: 9,
+     locale: 'en_US',
+     verified: true,
+     updated_time: '2013-06-02T06:51:19+0000' } }
+user already exists
+202.7.107.76 - - [Sun, 02 Jun 2013 09:03:11 GMT] "GET /auth/facebook/callback?code=AQAelXYKy6pHKQepXCQsUDqz5vT05cdWtx61T_66AJ5LDpSObAMnUbcqYLPQprOPcfUL0lyv0JhRzCbv0aql4h1a4kVAuzl4yyhKwa7j4CdlGNhtjoWFtt2w5rHXXQ1VmUgAmlqZzbPOGelFXnz0lLaLcVX81irCF71vVx0tmWxHtlq7o3OU9TxUN5vz02VoyEymIXeG6bE4ur1o2gq76Ss5mRcDXKxDPJWxNXNWGBrt54HkzNiE0_Ux5k6Aj2YYFCt-FDhYPdbE95_PCDwT-neyrcdwHBiR3dIGANdjrNdt-grOjJIPkku8_gFcfMYGtKU HTTP/1.1" 302 58 "https://www.visesha.com/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"
+202.7.107.76 - - [Sun, 02 Jun 2013 09:03:11 GMT] "GET / HTTP/1.1" 200 2083 "https://www.visesha.com/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"
+202.7.107.76 - - [Sun, 02 Jun 2013 09:03:11 GMT] "GET /css/bootstrap.min.css HTTP/1.1" 304 - "https://www.visesha.com/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"
+202.7.107.76 - - [Sun, 02 Jun 2013 09:03:11 GMT] "GET /css/bootstrap-responsive.min.css HTTP/1.1" 304 - "https://www.visesha.com/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"
+202.7.107.76 - - [Sun, 02 Jun 2013 09:03:11 GMT] "GET /js/bootstrap.min.js HTTP/1.1" 304 - "https://www.visesha.com/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"
+202.7.107.76 - - [Sun, 02 Jun 2013 09:03:11 GMT] "GET /js/guessholic.js HTTP/1.1" 304 - "https://www.visesha.com/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"
+202.7.107.76 - - [Sun, 02 Jun 2013 09:03:11 GMT] "GET /favicon.ico HTTP/1.1" 404 - "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"
+2
+<<<<<<<< Get random movies >>>>>>>>>>>
+result from database3,9,7,10,11
+[ { mid: 3,
+    screenshot: 'ppmEa254fcPH3BUb2rq4HLLKqP0.jpg',
+    options: [ 'Takkari Donga', 'Murari', 'Okkadu', 'Vamsi' ] },
+  { mid: 9,
+    screenshot: 'ti1uNwjSUyCHgqggQrbXttTIQU6.jpg',
+    options: [ 'Baadshah', 'Oosaravelli', 'Dhammu', 'Brundavanam' ] },
+  { mid: 7,
+    screenshot: 'pD2xWPElJpvlY5CEOiTR6biKbS9.jpg',
+    options: [ 'Indra', 'Tagore', 'Andarivaadu', 'Sneham kosam' ] },
+  { mid: 10,
+    screenshot: 'gyjR5rBODmDvN5Jva3FLwTBpJiX.jpg',
+    options: [ 'Rebel', 'Chatrapathi', 'Darling', 'Mirchi' ] },
+  { mid: 11,
+    screenshot: 'nf7KPGvm3IQLoNfuTxKvKwWUR5Z.jpg',
+    options: [ 'Daruvu', 'Nippu', 'Mirapakai', 'Dongala Mutha' ] } ]
+202.7.107.76 - - [Sun, 02 Jun 2013 09:03:12 GMT] "GET /account?lang=2 HTTP/1.1" 200 8949 "https://www.visesha.com/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"
+202.7.107.76 - - [Sun, 02 Jun 2013 09:03:12 GMT] "GET /css/bootstrap.min.css HTTP/1.1" 304 - "https://www.visesha.com/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"
+202.7.107.76 - - [Sun, 02 Jun 2013 09:03:12 GMT] "GET /css/bootstrap-responsive.min.css HTTP/1.1" 304 - "https://www.visesha.com/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"
+202.7.107.76 - - [Sun, 02 Jun 2013 09:03:12 GMT] "GET /js/guessholic.js HTTP/1.1" 304 - "https://www.visesha.com/account?lang=2" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"
+202.7.107.76 - - [Sun, 02 Jun 2013 09:03:12 GMT] "GET /js/bootstrap.min.js HTTP/1.1" 304 - "https://www.visesha.com/account?lang=2" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"
+202.7.107.76 - - [Sun, 02 Jun 2013 09:03:13 GMT] "GET /favicon.ico HTTP/1.1" 404 - "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"
+{ m3: '2', m9: '3', m7: '3', m10: '4', m11: '1' }
+[ '2', '2', '3', '4', '1' ]
+<<<<<<<< Results >>>>>>>>>>
+right
+wrong
+right
+right
+right
+created dir!
+202.7.107.76 - - [Sun, 02 Jun 2013 09:03:33 GMT] "POST /result HTTP/1.1" 302 70 "https://www.visesha.com/account?lang=2" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"
+202.7.107.76 - - [Sun, 02 Jun 2013 09:03:33 GMT] "GET /result HTTP/1.1" 200 3403 "https://www.visesha.com/account?lang=2" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"
+202.7.107.76 - - [Sun, 02 Jun 2013 09:03:34 GMT] "GET /css/bootstrap.min.css HTTP/1.1" 304 - "https://www.visesha.com/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"
+202.7.107.76 - - [Sun, 02 Jun 2013 09:03:34 GMT] "GET /js/guessholic.js HTTP/1.1" 304 - "https://www.visesha.com/result" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"
+202.7.107.76 - - [Sun, 02 Jun 2013 09:03:34 GMT] "GET /css/bootstrap-responsive.min.css HTTP/1.1" 304 - "https://www.visesha.com/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"
+202.7.107.76 - - [Sun, 02 Jun 2013 09:03:34 GMT] "GET /js/bootstrap.min.js HTTP/1.1" 304 - "https://www.visesha.com/result" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"
+202.7.107.76 - - [Sun, 02 Jun 2013 09:03:34 GMT] "GET /resimg/100000490412078/fb.png HTTP/1.1" 200 259587 "https://www.visesha.com/result" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"
+202.7.107.76 - - [Sun, 02 Jun 2013 09:03:34 GMT] "GET /favicon.ico HTTP/1.1" 404 - "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"
+202.7.107.76 - - [Sun, 02 Jun 2013 09:03:41 GMT] "GET /favicon.ico HTTP/1.1" 404 - "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"
+{ m3: '2', m9: '2', m7: '3', m10: '4', m11: '1' }
+[ '2', '2', '3', '4', '1' ]
+<<<<<<<< Results >>>>>>>>>>
+right
+right
+right
+right
+right
+created dir!
+202.7.107.76 - - [Sun, 02 Jun 2013 09:03:48 GMT] "POST /result HTTP/1.1" 302 70 "https://www.visesha.com/account?lang=2" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"
+202.7.107.76 - - [Sun, 02 Jun 2013 09:03:48 GMT] "GET /result HTTP/1.1" 200 3403 "https://www.visesha.com/account?lang=2" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"
+202.7.107.76 - - [Sun, 02 Jun 2013 09:03:48 GMT] "GET /css/bootstrap.min.css HTTP/1.1" 304 - "https://www.visesha.com/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"
+202.7.107.76 - - [Sun, 02 Jun 2013 09:03:48 GMT] "GET /css/bootstrap-responsive.min.css HTTP/1.1" 304 - "https://www.visesha.com/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"
+202.7.107.76 - - [Sun, 02 Jun 2013 09:03:48 GMT] "GET /js/guessholic.js HTTP/1.1" 304 - "https://www.visesha.com/result" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"
+202.7.107.76 - - [Sun, 02 Jun 2013 09:03:48 GMT] "GET /js/bootstrap.min.js HTTP/1.1" 304 - "https://www.visesha.com/result" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"
+202.7.107.76 - - [Sun, 02 Jun 2013 09:03:48 GMT] "GET /resimg/100000490412078/fb.png HTTP/1.1" 200 258544 "https://www.visesha.com/result" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"
+202.7.107.76 - - [Sun, 02 Jun 2013 09:03:48 GMT] "GET /favicon.ico HTTP/1.1" 404 - "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"
+202.7.107.76 - - [Sun, 02 Jun 2013 09:57:46 GMT] "POST / HTTP/1.1" 200 1350 "https://apps.facebook.com/moviebyscreenshot/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"
+202.7.107.76 - - [Sun, 02 Jun 2013 09:57:46 GMT] "GET /css/bootstrap-responsive.min.css HTTP/1.1" 304 - "https://visesha.com/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"
+202.7.107.76 - - [Sun, 02 Jun 2013 09:57:46 GMT] "GET /css/bootstrap.min.css HTTP/1.1" 304 - "https://visesha.com/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"
+202.7.107.76 - - [Sun, 02 Jun 2013 09:57:46 GMT] "GET /js/guessholic.js HTTP/1.1" 304 - "https://visesha.com/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"
+202.7.107.76 - - [Sun, 02 Jun 2013 09:57:46 GMT] "GET /js/bootstrap.min.js HTTP/1.1" 304 - "https://visesha.com/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"
+202.7.107.76 - - [Sun, 02 Jun 2013 09:57:47 GMT] "GET /auth/facebook HTTP/1.1" 302 486 "https://visesha.com/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"
+<<<<<<<<<<<< User profile >>>>>>>>>>>>
+{ provider: 'facebook',
+  id: '100000490412078',
+  username: 'tanya.raaz',
+  displayName: 'Tanya Sri',
+  name: { familyName: 'Sri', givenName: 'Tanya', middleName: undefined },
+  gender: 'female',
+  profileUrl: 'http://www.facebook.com/tanya.raaz',
+  emails: [ { value: 'tanyaraaz@gmail.com' } ],
+  _raw: '{"id":"100000490412078","name":"Tanya Sri","first_name":"Tanya","last_name":"Sri","link":"http:\\/\\/www.facebook.com\\/tanya.raaz","username":"tanya.raaz","location":{"id":"115200305158163","name":"Hyderabad, Andhra Pradesh"},"favorite_athletes":[{"id":"100787839962234","name":"Saina Nehwal"},{"id":"344128252278047","name":"Sachin Tendulkar"}],"gender":"female","email":"tanyaraaz\\u0040gmail.com","timezone":9,"locale":"en_US","verified":true,"updated_time":"2013-06-02T06:51:19+0000"}',
+  _json: 
+   { id: '100000490412078',
+     name: 'Tanya Sri',
+     first_name: 'Tanya',
+     last_name: 'Sri',
+     link: 'http://www.facebook.com/tanya.raaz',
+     username: 'tanya.raaz',
+     location: { id: '115200305158163', name: 'Hyderabad, Andhra Pradesh' },
+     favorite_athletes: [ [Object], [Object] ],
+     gender: 'female',
+     email: 'tanyaraaz@gmail.com',
+     timezone: 9,
+     locale: 'en_US',
+     verified: true,
+     updated_time: '2013-06-02T06:51:19+0000' } }
+user already exists
+202.7.107.76 - - [Sun, 02 Jun 2013 09:57:48 GMT] "GET /auth/facebook/callback?code=AQDWyJMRnSz0YV_v1EMpgXEeMeARqnVg7ODAp5uYU5V7yPUDUnZjONEPnMFg2roqzPyMZSRpd5G4BHCnGKSWtQHhPrgpVgZgu0dqWVqGgjPv0fhp71I-Ewdmgy71Rx5144G6Eu-eVR_Ph00AMutxdabdFDlhegVV4G9PZkzAlRS8D4PBHUCGL9OwpKsy5xsEnEx1UYZln0oaoQm5QKdzhPMFSYdoeW_Ek9EjgtqjuhaIqYpQMd50lewjzQX_5yWnEihQfTw223HSRRigLYB263Rw9_rdXOJrbRGyoADcTNDuR2vw_BNbsO0kwZE0wXsMVv4 HTTP/1.1" 302 58 "https://visesha.com/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"
+202.7.107.76 - - [Sun, 02 Jun 2013 09:57:48 GMT] "GET / HTTP/1.1" 304 - "https://visesha.com/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"
+202.7.107.76 - - [Sun, 02 Jun 2013 09:57:48 GMT] "GET /css/bootstrap.min.css HTTP/1.1" 304 - "https://www.visesha.com/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"
+202.7.107.76 - - [Sun, 02 Jun 2013 09:57:48 GMT] "GET /css/bootstrap-responsive.min.css HTTP/1.1" 304 - "https://www.visesha.com/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"
+202.7.107.76 - - [Sun, 02 Jun 2013 09:57:48 GMT] "GET /js/guessholic.js HTTP/1.1" 304 - "https://www.visesha.com/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"
+202.7.107.76 - - [Sun, 02 Jun 2013 09:57:48 GMT] "GET /js/bootstrap.min.js HTTP/1.1" 304 - "https://www.visesha.com/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"
+202.7.107.76 - - [Sun, 02 Jun 2013 09:57:48 GMT] "GET /favicon.ico HTTP/1.1" 404 - "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"
+2
+<<<<<<<< Get random movies >>>>>>>>>>>
+result from database12,10,11,4,8
+[ { mid: 12,
+    screenshot: 'cEUqBSDJ0SVXxCwNsfnJuBPCVpq.jpg',
+    options: [ 'Anjaneyulu', 'Daruvu', 'Nippu', 'Mirapakai' ] },
+  { mid: 10,
+    screenshot: 'gyjR5rBODmDvN5Jva3FLwTBpJiX.jpg',
+    options: [ 'Rebel', 'Chatrapathi', 'Darling', 'Mirchi' ] },
+  { mid: 11,
+    screenshot: 'nf7KPGvm3IQLoNfuTxKvKwWUR5Z.jpg',
+    options: [ 'Daruvu', 'Nippu', 'Mirapakai', 'Dongala Mutha' ] },
+  { mid: 4,
+    screenshot: 'dPexyv50DBDK9yb6VObvXTC4ylx.jpg',
+    options: [ 'Vamsi', 'Khaleja', 'Athadu', 'Okkadu' ] },
+  { mid: 8,
+    screenshot: 'a986OwsqE0Ifuhd5PUsuR04OZQg.jpg',
+    options: [ 'Ashok', 'Andhrawala', 'Aadhi', 'Naga' ] } ]
+202.7.107.76 - - [Sun, 02 Jun 2013 09:57:50 GMT] "GET /account?lang=2 HTTP/1.1" 200 8931 "https://www.visesha.com/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"
+202.7.107.76 - - [Sun, 02 Jun 2013 09:57:50 GMT] "GET /css/bootstrap.min.css HTTP/1.1" 304 - "https://www.visesha.com/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"
+202.7.107.76 - - [Sun, 02 Jun 2013 09:57:50 GMT] "GET /css/bootstrap-responsive.min.css HTTP/1.1" 304 - "https://www.visesha.com/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"
+202.7.107.76 - - [Sun, 02 Jun 2013 09:57:50 GMT] "GET /js/guessholic.js HTTP/1.1" 304 - "https://www.visesha.com/account?lang=2" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"
+202.7.107.76 - - [Sun, 02 Jun 2013 09:57:50 GMT] "GET /js/bootstrap.min.js HTTP/1.1" 304 - "https://www.visesha.com/account?lang=2" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"
+202.7.107.76 - - [Sun, 02 Jun 2013 09:57:51 GMT] "GET /favicon.ico HTTP/1.1" 404 - "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"
+2
+<<<<<<<< Get random movies >>>>>>>>>>>
+result from database3,9,1,11,4
+[ { mid: 3,
+    screenshot: 'ppmEa254fcPH3BUb2rq4HLLKqP0.jpg',
+    options: [ 'Takkari Donga', 'Murari', 'Okkadu', 'Vamsi' ] },
+  { mid: 9,
+    screenshot: 'ti1uNwjSUyCHgqggQrbXttTIQU6.jpg',
+    options: [ 'Baadshah', 'Oosaravelli', 'Dhammu', 'Brundavanam' ] },
+  { mid: 1,
+    screenshot: 'dbZZVbUhvhHoQw8BzcbLeDbCsaG.jpg',
+    options: [ 'Tholi Prema', 'Gokulamlo Seetha', 'Thammudu', 'Suswagatham' ] },
+  { mid: 11,
+    screenshot: 'nf7KPGvm3IQLoNfuTxKvKwWUR5Z.jpg',
+    options: [ 'Daruvu', 'Nippu', 'Mirapakai', 'Dongala Mutha' ] },
+  { mid: 4,
+    screenshot: 'dPexyv50DBDK9yb6VObvXTC4ylx.jpg',
+    options: [ 'Vamsi', 'Khaleja', 'Athadu', 'Okkadu' ] } ]
+202.7.107.76 - - [Sun, 02 Jun 2013 09:58:00 GMT] "GET /account?lang=2 HTTP/1.1" 200 8952 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"
+202.7.107.76 - - [Sun, 02 Jun 2013 09:58:00 GMT] "GET /css/bootstrap-responsive.min.css HTTP/1.1" 304 - "https://www.visesha.com/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"
+202.7.107.76 - - [Sun, 02 Jun 2013 09:58:00 GMT] "GET /css/bootstrap.min.css HTTP/1.1" 304 - "https://www.visesha.com/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"
+202.7.107.76 - - [Sun, 02 Jun 2013 09:58:00 GMT] "GET /js/guessholic.js HTTP/1.1" 304 - "https://www.visesha.com/account?lang=2" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"
+202.7.107.76 - - [Sun, 02 Jun 2013 09:58:00 GMT] "GET /js/bootstrap.min.js HTTP/1.1" 304 - "https://www.visesha.com/account?lang=2" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"
+202.7.107.76 - - [Sun, 02 Jun 2013 09:58:00 GMT] "GET /favicon.ico HTTP/1.1" 404 - "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"
+2
+<<<<<<<< Get random movies >>>>>>>>>>>
+result from database2,12,6,11,4
+[ { mid: 2,
+    screenshot: '2QqL7d8ftPHjLuOZeVz0ZZKWOEK.jpg',
+    options: [ 'Thammudu', 'Kushi', 'Badri', 'Gokulamlo Seetha' ] },
+  { mid: 12,
+    screenshot: 'cEUqBSDJ0SVXxCwNsfnJuBPCVpq.jpg',
+    options: [ 'Anjaneyulu', 'Daruvu', 'Nippu', 'Mirapakai' ] },
+  { mid: 6,
+    screenshot: '6LSHGPthF8XZGgIF4AdhHJv3emM.jpg',
+    options: [ 'Chirutha', 'Naayak', 'Racha', 'Magadheera' ] },
+  { mid: 11,
+    screenshot: 'nf7KPGvm3IQLoNfuTxKvKwWUR5Z.jpg',
+    options: [ 'Daruvu', 'Nippu', 'Mirapakai', 'Dongala Mutha' ] },
+  { mid: 4,
+    screenshot: 'dPexyv50DBDK9yb6VObvXTC4ylx.jpg',
+    options: [ 'Vamsi', 'Khaleja', 'Athadu', 'Okkadu' ] } ]
+202.7.107.76 - - [Sun, 02 Jun 2013 10:00:59 GMT] "GET /account?lang=2 HTTP/1.1" 200 8937 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"
+202.7.107.76 - - [Sun, 02 Jun 2013 10:00:59 GMT] "GET /css/bootstrap.min.css HTTP/1.1" 304 - "https://www.visesha.com/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"
+202.7.107.76 - - [Sun, 02 Jun 2013 10:00:59 GMT] "GET /css/bootstrap-responsive.min.css HTTP/1.1" 304 - "https://www.visesha.com/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"
+202.7.107.76 - - [Sun, 02 Jun 2013 10:00:59 GMT] "GET /js/guessholic.js HTTP/1.1" 304 - "https://www.visesha.com/account?lang=2" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"
+202.7.107.76 - - [Sun, 02 Jun 2013 10:00:59 GMT] "GET /js/bootstrap.min.js HTTP/1.1" 304 - "https://www.visesha.com/account?lang=2" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"
+202.7.107.76 - - [Sun, 02 Jun 2013 10:00:59 GMT] "GET /favicon.ico HTTP/1.1" 404 - "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"
+2
+<<<<<<<< Get random movies >>>>>>>>>>>
+result from database3,2,12,6,4
+[ { mid: 3,
+    screenshot: 'ppmEa254fcPH3BUb2rq4HLLKqP0.jpg',
+    options: [ 'Takkari Donga', 'Murari', 'Okkadu', 'Vamsi' ] },
+  { mid: 2,
+    screenshot: '2QqL7d8ftPHjLuOZeVz0ZZKWOEK.jpg',
+    options: [ 'Thammudu', 'Kushi', 'Badri', 'Gokulamlo Seetha' ] },
+  { mid: 12,
+    screenshot: 'cEUqBSDJ0SVXxCwNsfnJuBPCVpq.jpg',
+    options: [ 'Anjaneyulu', 'Daruvu', 'Nippu', 'Mirapakai' ] },
+  { mid: 6,
+    screenshot: '6LSHGPthF8XZGgIF4AdhHJv3emM.jpg',
+    options: [ 'Chirutha', 'Naayak', 'Racha', 'Magadheera' ] },
+  { mid: 4,
+    screenshot: 'dPexyv50DBDK9yb6VObvXTC4ylx.jpg',
+    options: [ 'Vamsi', 'Khaleja', 'Athadu', 'Okkadu' ] } ]
+202.7.107.76 - - [Sun, 02 Jun 2013 10:01:02 GMT] "GET /account?lang=2 HTTP/1.1" 200 8930 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"
+202.7.107.76 - - [Sun, 02 Jun 2013 10:01:02 GMT] "GET /css/bootstrap-responsive.min.css HTTP/1.1" 304 - "https://www.visesha.com/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"
+202.7.107.76 - - [Sun, 02 Jun 2013 10:01:02 GMT] "GET /css/bootstrap.min.css HTTP/1.1" 304 - "https://www.visesha.com/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"
+202.7.107.76 - - [Sun, 02 Jun 2013 10:01:02 GMT] "GET /js/guessholic.js HTTP/1.1" 304 - "https://www.visesha.com/account?lang=2" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"
+202.7.107.76 - - [Sun, 02 Jun 2013 10:01:02 GMT] "GET /js/bootstrap.min.js HTTP/1.1" 304 - "https://www.visesha.com/account?lang=2" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"
+202.7.107.76 - - [Sun, 02 Jun 2013 10:01:02 GMT] "GET /favicon.ico HTTP/1.1" 404 - "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"
+2
+<<<<<<<< Get random movies >>>>>>>>>>>
+result from database3,7,2,6,8
+[ { mid: 3,
+    screenshot: 'ppmEa254fcPH3BUb2rq4HLLKqP0.jpg',
+    options: [ 'Takkari Donga', 'Murari', 'Okkadu', 'Vamsi' ] },
+  { mid: 7,
+    screenshot: 'pD2xWPElJpvlY5CEOiTR6biKbS9.jpg',
+    options: [ 'Indra', 'Tagore', 'Andarivaadu', 'Sneham kosam' ] },
+  { mid: 2,
+    screenshot: '2QqL7d8ftPHjLuOZeVz0ZZKWOEK.jpg',
+    options: [ 'Thammudu', 'Kushi', 'Badri', 'Gokulamlo Seetha' ] },
+  { mid: 6,
+    screenshot: '6LSHGPthF8XZGgIF4AdhHJv3emM.jpg',
+    options: [ 'Chirutha', 'Naayak', 'Racha', 'Magadheera' ] },
+  { mid: 8,
+    screenshot: 'a986OwsqE0Ifuhd5PUsuR04OZQg.jpg',
+    options: [ 'Ashok', 'Andhrawala', 'Aadhi', 'Naga' ] } ]
+202.7.107.76 - - [Sun, 02 Jun 2013 10:01:07 GMT] "GET /account?lang=2 HTTP/1.1" 200 8930 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"
+202.7.107.76 - - [Sun, 02 Jun 2013 10:01:07 GMT] "GET /css/bootstrap-responsive.min.css HTTP/1.1" 304 - "https://www.visesha.com/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"
+202.7.107.76 - - [Sun, 02 Jun 2013 10:01:07 GMT] "GET /css/bootstrap.min.css HTTP/1.1" 304 - "https://www.visesha.com/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"
+202.7.107.76 - - [Sun, 02 Jun 2013 10:01:07 GMT] "GET /js/bootstrap.min.js HTTP/1.1" 304 - "https://www.visesha.com/account?lang=2" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"
+202.7.107.76 - - [Sun, 02 Jun 2013 10:01:07 GMT] "GET /js/guessholic.js HTTP/1.1" 304 - "https://www.visesha.com/account?lang=2" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"
+202.7.107.76 - - [Sun, 02 Jun 2013 10:01:07 GMT] "GET /favicon.ico HTTP/1.1" 404 - "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"

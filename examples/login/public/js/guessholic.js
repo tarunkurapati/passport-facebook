@@ -35,4 +35,5 @@ $(document).ready(function(){
         console.log(all_answered);
         return all_answered;
     });
+$('#myModal').modal('toggle');
 });
